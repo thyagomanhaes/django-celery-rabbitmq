@@ -1,0 +1,13 @@
+Em ambiente windows, para rodar celery no terminal:
+>> celery -A proj worker -l info -P solo
+
+Isto vai criar uma instância do celery, o qual vai listar quais tarefas são possíveis de ser executadas
+Além de já fazer uma conexão com rabbitMQ na porta 15672
+
+executar python shell
+>> python manage.py shell
+
+buscar a tarefa do app1
+>> from app1.tasks import add
+>> add.deplay() # Envia a tarefa para o pool do celery, e o celery envia para a fila do RabbitMq
+>> add.apply_async((4,5), countdown=5)
